@@ -1,42 +1,5 @@
-
-var carrito = 0;
-
-function remera (precioRemera) {
-  
-  var resultado = precioRemera ;
-  carrito = carrito + resultado;
-  document.getElementById ("carrito").innerHTML = `<b>${carrito}</b>`
-  return carrito
-  
-}
-
-function buzo (precioBuzo) {
-
-var resultado = precioBuzo;
-carrito = carrito + resultado;
-document.getElementById ("carrito").innerHTML = `<b>${carrito}</b>`
-return carrito
-
-}
-
-function pantalon (precioPantalon) {
-  
-  var resultado = precioPantalon;
-  carrito = carrito + resultado;
-  document.getElementById ("carrito").innerHTML = `<b>${carrito}</b>`
-  return carrito
-}
-
-function gorra (precioGorra) {
-
-var resultado = precioGorra;
-carrito = carrito + resultado;
-document.getElementById ("carrito").innerHTML = `<b>${carrito}</b>`;
-return carrito
-
-}
-
-
+let carrito = [];
+let baseDeDatos = [];
 
 class Producto {
 
@@ -55,9 +18,6 @@ let verBuzo = new Producto ("Buzo", "Cool Haas",8, 600,"https://th.bing.com/th/i
 let verPantalon = new Producto ("Pantalon", "Nike",5, 1000,"https://th.bing.com/th/id/OIP.EFpqjTBAE60TYe77bzjMHAHaJQ?w=192&h=240&c=7&o=5&pid=1.7")
 let verGorra = new Producto ("Gorra", "DC",12, 200,"https://th.bing.com/th/id/OIP.WMdUe8bGVRaC5qX8592vFQEdEs?w=188&h=198&c=7&o=5&pid=1.7")
 
-
-
-let baseDeDatos = [];
 
 baseDeDatos.push(verRemera, verBuzo, verPantalon, verGorra);
 
@@ -78,7 +38,10 @@ for (let i = 0; i < baseDeDatos.length; i++) {
         <h5>$${baseDeDatos[i].precio}</h5>
         </div>
         <div class="card-footer">
-        <button onclick="agregarAlCarrito()">Comprar</button>
+        <button class="btn btn-primary" style="width:100%" 
+    onclick='agregarAlCarrito(${JSON.stringify(
+      baseDeDatos[i]
+    )})'>Agregar al carrito</button>
         </div>
         </div>
         </div>
@@ -91,4 +54,21 @@ for (let i = 0; i < baseDeDatos.length; i++) {
 }
 
 document.getElementById("productos").innerHTML = aux;
+
+
+function agregarAlCarrito(producto) {
+  carrito.push(producto);
+  console.log(carrito);
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+   let aux = 0;
+   for (let i = 0; i < carrito.length; i++) {
+     aux += carrito[i].precio;
+   }
+   document.getElementById("precio-total").innerHTML = "$" + aux; 
+}
+
+if (localStorage.getItem("carrito") != null) {
+  let valoresDelCarrito = JSON.parse(localStorage.getItem("carrito"));
+  carrito = valoresDelCarrito;
+}
 
