@@ -72,3 +72,30 @@ if (localStorage.getItem("carrito") != null) {
   carrito = valoresDelCarrito;
 }
 
+
+function obtenerDatos(){
+  nombreCliente = document.getElementById("nombreCliente").value;
+  apellidoCliente = document.getElementById("apellidoCliente").value; 
+     var nombreCompleto = [nombreCliente + " " + apellidoCliente];
+     return nombreCompleto; }
+
+var input = document.getElementsByTagName ("input")
+
+
+for (i=0; i<input.length; i++) {
+  input[i].addEventListener("change", resultadoNombre)  
+ };
+
+ function resultadoNombre (){
+  resultado = obtenerDatos();
+  console.log(resultado);
+ };
+
+ function comprar () {
+
+  totalProductos = carrito;
+  console.log (totalProductos);
+
+
+ }
+
