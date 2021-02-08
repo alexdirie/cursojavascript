@@ -91,11 +91,32 @@ for (i=0; i<input.length; i++) {
   console.log(resultado);
  };
 
+ let aux1 = ``
  function comprar () {
-
-  totalProductos = carrito;
-  console.log (totalProductos);
-
-
+  
+  for(let i = 0; i < carrito.length; i++){
+    aux1 += ` <div class="cartasCarrito">
+        <div class="col-lg-8 col-md-6 mb-4">
+        <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="${carrito[i].imagen}" alt=""></a>
+        <div class="card-body">
+        <h4 class="card-title">
+        ${carrito[i].producto}
+        </h4>
+        <h4 class="card-title">
+        ${carrito[i].marca}
+        </h4>
+        <h5>$${carrito[i].precio}</h5>
+        </div>
+        <div class="card-footer">
+        </div>
+        </div>
+        </div>
+        </div>
+        `;
+  }
+  document.getElementById("carrito").innerHTML = aux1 
  }
+  
+
 
