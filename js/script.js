@@ -117,6 +117,51 @@ for (i=0; i<input.length; i++) {
   }
   document.getElementById("carrito").innerHTML = aux1 
  }
-  
 
+ //APLICANDO jQuery//
+ 
+ $("h1").hover( function () {
+	$ ( this ).css("color" , "red");
+},
+  function () {
+    $(this).css("color", "blue");
+	});
+
+  $(".jumbotron").click( 
+    function () {
+      $(this).css("background-color", "gray");
+    });
+
+    $("button").click( function () {
+      $ ( this ).css("background-color" , "black");
+    });
+
+    $("input").hover( function () {
+      $ ( this ).css("background-color" , "lightblue");
+    },
+    function () {
+      $(this).css("background-color", "white");
+    });
+
+    $("#precio-total").hover( function () {
+      $ ( this ).css("background-color" , "lightblue");
+    },
+    function () {
+      $(this).css("background-color", "white");
+    });
+
+    let carritoColor = $('#precio-total');
+    carritoColor.css('color', 'red');
+
+    $('#nombreCliente').on ('keypress', function (e) {
+     if (e.which == 13) {
+      alert ('Ahora llene su apellido');
+     }
+    });
+
+    $('#apellidoCliente').on ('keypress', function (e) {
+      if (e.which == 13) {
+       alert ('Muchas gracias por completar sus datos');
+      }
+     });
 
